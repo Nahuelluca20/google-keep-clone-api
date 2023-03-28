@@ -12,11 +12,12 @@ import {
   ArchiveController,
 } from './controllers';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Note, NoteSchema } from './schemas';
+import { Note, NoteSchema, Tag, TagSchema } from './schemas';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Note.name, schema: NoteSchema }]),
+    MongooseModule.forFeature([{ name: Tag.name, schema: TagSchema }]),
   ],
   providers: [NotesService, ArchiveService, ReminderService, TagsService],
   controllers: [

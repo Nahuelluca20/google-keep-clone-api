@@ -1,7 +1,15 @@
 import { Note, UpdateNote } from '@/notes/schemas';
 import { NotesService } from '@/notes/services';
 import { ValidationPipe } from '@/pipes/validation.pipe';
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('notes')
@@ -27,5 +35,10 @@ export class NotesController {
   @Put(':id')
   update(@Param('id') id: string, @Body() payload: UpdateNote) {
     return this.notesSevice.update(id, payload);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    return this.notesSevice.delete(id);
   }
 }
