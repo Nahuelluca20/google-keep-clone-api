@@ -26,7 +26,7 @@ import config from '@/config';
       provide: 'MONGO',
       useFactory: async (configServise: ConfigType<typeof config>) => {
         const { user, password, host, dbName } = configServise.mongo;
-        const uri = `mongodb+srv://${user}:${password}@${host}/${dbName}?retryWrites=true&w=majority`;
+        const uri = `mongodb+srv://${user}:${password}@cluster0.r3t2b.mongodb.net/?retryWrites=true&w=majority`;
         const client = new MongoClient(uri, {
           // useNewUrlParser: true,
           // useUnifiedTopology: true,
