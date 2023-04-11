@@ -12,5 +12,5 @@ services:
     restart: always
     volumes:
       - ./data:/data/db
-    ports:
-      - 27017:27017
+    # ports:
+    #   - 27017:27017
