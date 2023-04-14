@@ -1,15 +1,18 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as cors from 'cors';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
-    cors: {
-      origin: '*',
-      methods: ['GET', 'POST'],
-      allowedHeaders: ['X-Requested-With', 'Authorization'],
-    },
-  });
+  const app = await NestFactory.create(AppModule);
+  app.use(
+    cors({
+      origin: 'http://127.0.0.1:5173',
+      allowedHeaders: ['Content-Type'],
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    }),
+  );
   const config = new DocumentBuilder()
     .setTitle('Keep API')
     .setDescription('The keep-clone API')
