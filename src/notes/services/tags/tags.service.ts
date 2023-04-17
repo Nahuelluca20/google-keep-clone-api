@@ -36,7 +36,7 @@ export class TagsService {
   }
 
   async update(id: string, changes: UpdateTag) {
-    const note = await this.tagModel
+    const tag = await this.tagModel
       .findByIdAndUpdate(
         id,
         {
@@ -45,9 +45,9 @@ export class TagsService {
         { new: true },
       )
       .exec();
-    if (!note) {
+    if (!tag) {
       throw new NotFoundException(`Product #${id} not found`);
     }
-    return note;
+    return tag;
   }
 }

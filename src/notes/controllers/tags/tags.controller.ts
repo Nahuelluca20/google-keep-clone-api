@@ -21,6 +21,11 @@ export class TagsController {
   }
 
   @Put(':id')
+  update(@Param('id') id: string, @Body() payload: UpdateTag) {
+    return this.tagsSevice.update(id, payload);
+  }
+
+  @Put(':id')
   removeNoteFromTag(@Param('id') id: string, @Body() note: any) {
     return this.tagsSevice.removeNoteFromTag(id, note);
   }
@@ -33,11 +38,6 @@ export class TagsController {
   @Post()
   create(@Body(new ValidationPipe()) createTag: Tag) {
     return this.tagsSevice.create(createTag);
-  }
-
-  @Put(':id')
-  update(@Param('id') id: string, @Body() payload: UpdateTag) {
-    return this.tagsSevice.update(id, payload);
   }
 
   @Delete(':id')
