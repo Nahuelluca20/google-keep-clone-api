@@ -15,7 +15,6 @@ export class Note {
 
   @Prop()
   @ApiProperty()
-  @IsNotEmpty()
   @IsString()
   content: string;
 
@@ -26,7 +25,6 @@ export class Note {
 
   @Prop()
   @ApiProperty()
-  @IsNotEmpty()
   @IsString()
   reminder: string;
 
