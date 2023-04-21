@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(
     cors({
-      origin: 'http://127.0.0.1:5173',
+      origin: ['http://127.0.0.1:5173', 'https://keep-nahuel.netlify.app/'],
       allowedHeaders: ['Content-Type'],
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
