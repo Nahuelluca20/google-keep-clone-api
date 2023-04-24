@@ -1,6 +1,7 @@
 import { Note, NoteDocument, UpdateNote } from '@/notes/schemas';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { UpdateResult } from 'mongodb';
 import { Model } from 'mongoose';
 
 @Injectable()
@@ -28,6 +29,14 @@ export class NotesService {
       throw new NotFoundException(`Product #${id} not found`);
     }
     return note;
+  }
+
+  async addTagsToNote(noteId: string, tags: string[]): Promise<UpdateResult> {
+    return this.noteModel.findByIdAndUpdate(
+      noteId,
+      { $addToSet: { tags: { $each: tags } } },
+      { new: true },
+    );
   }
 
   async update(id: string, changes: UpdateNote): Promise<Note> {

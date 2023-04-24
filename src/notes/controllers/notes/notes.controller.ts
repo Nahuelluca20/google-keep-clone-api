@@ -17,6 +17,11 @@ import { ApiTags } from '@nestjs/swagger';
 export class NotesController {
   constructor(private readonly notesSevice: NotesService) {}
 
+  @Post(':id/tags')
+  addTagsToNote(@Param('id') id: string, @Body('tags') tags: string[]) {
+    return this.notesSevice.addTagsToNote(id, tags);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.notesSevice.findOne(id);
