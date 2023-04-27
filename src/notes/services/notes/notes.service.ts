@@ -39,6 +39,14 @@ export class NotesService {
     );
   }
 
+  async removeTagsFromNote(noteId: string, tag: string): Promise<UpdateResult> {
+    return this.noteModel.findByIdAndUpdate(
+      noteId,
+      { $pull: { tags: tag } },
+      { new: true },
+    );
+  }
+
   async update(id: string, changes: UpdateNote): Promise<Note> {
     const note = await this.noteModel
       .findByIdAndUpdate(
