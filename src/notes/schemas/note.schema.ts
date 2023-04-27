@@ -21,7 +21,7 @@ export class Note {
   content: string;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: () => Tag }] })
-  tags: Types.Array<Tag>;
+  tags: Tag | Types.Array<Tag>;
 
   @Prop()
   @ApiProperty()

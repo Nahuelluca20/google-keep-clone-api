@@ -19,7 +19,7 @@ export class NotesService {
   }
 
   async create(createNote: Note): Promise<Note> {
-    const createdNote = await new this.noteModel(createNote);
+    const createdNote = await new this.noteModel(createNote).populate('tags');
     return createdNote.save();
   }
 
