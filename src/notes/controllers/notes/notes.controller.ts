@@ -22,9 +22,9 @@ export class NotesController {
     return this.notesSevice.addTagsToNote(id, tags);
   }
 
-  @Delete(':id/tags')
-  removeTagsFromNote(@Param('id') id: string, @Body('tags') tags: string) {
-    return this.notesSevice.removeTagsFromNote(id, tags);
+  @Delete(':id/tag/:tagId')
+  removeTagsFromNote(@Param('id') id: string, @Param('tagId') tagId: string) {
+    return this.notesSevice.removeTagsFromNote(id, tagId);
   }
 
   @Get(':id')
