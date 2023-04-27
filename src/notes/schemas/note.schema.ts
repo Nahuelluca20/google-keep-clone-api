@@ -2,6 +2,8 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { IsArray, IsBoolean, IsNotEmpty, IsString } from 'class-validator';
+import { Document, Types } from 'mongoose';
+import { Tag } from './tag.schema';
 
 export type NoteDocument = HydratedDocument<Note>;
 
@@ -18,10 +20,8 @@ export class Note {
   @IsString()
   content: string;
 
-  @Prop()
-  @IsArray()
-  @IsString({ each: true })
-  tags: string[];
+  @Prop({ type: [{ type: Types.ObjectId, ref: () => Tag }] })
+  tags: Types.Array<Tag>;
 
   @Prop()
   @ApiProperty()

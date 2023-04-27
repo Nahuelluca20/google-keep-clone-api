@@ -9,7 +9,7 @@ export class NotesService {
   constructor(@InjectModel(Note.name) private noteModel: Model<NoteDocument>) {}
 
   async findAll(): Promise<Note[]> {
-    const notes = await this.noteModel.find().exec();
+    const notes = await this.noteModel.find().populate('tags').exec();
     return notes;
   }
 

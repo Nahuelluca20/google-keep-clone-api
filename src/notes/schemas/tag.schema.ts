@@ -16,7 +16,7 @@ export class Tag {
   tagName: string;
 
   @ApiProperty()
-  @Prop({ type: [{ type: Types.ObjectId, ref: Note.name }] })
+  @Prop({ type: [{ type: Types.ObjectId, ref: Note }] })
   notes: Types.Array<Note>;
 }
 
