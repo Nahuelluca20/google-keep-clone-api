@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { IsArray, IsBoolean, IsNotEmpty, IsString } from 'class-validator';
-import { Document, Types } from 'mongoose';
+import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
+import { Types } from 'mongoose';
 import { Tag } from './tag.schema';
 
 export type NoteDocument = HydratedDocument<Note>;
