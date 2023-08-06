@@ -13,7 +13,7 @@ import config from '@/config';
         const { user, password, host, dbName, connection } =
           configServise.mongo;
         return {
-          uri: `${connection}://${user}:${password}@cluster0.ghuq0.mongodb.net/?retryWrites=true&w=majority`,
+          uri: `mongodb+srv://${user}:${password}@cluster0.ghuq0.mongodb.net/?retryWrites=true&w=majority`,
           useNewUrlParser: true,
           useUnifiedTopology: true,
         };
